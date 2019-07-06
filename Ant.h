@@ -64,7 +64,7 @@ private:
 			for(unsigned int j = 0; j < pheromones.size(); j++)
 					pheromones[i][j] = (1 - evap)*pheromones[i][j] + deltaPheromone[i][j];
 	}
-	//проверка на тупик для муравья
+	//ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГІГіГЇГЁГЄ Г¤Г«Гї Г¬ГіГ°Г ГўГјГї
 	bool DeadEnd(vector<int> *vertex){
 		for(unsigned int i = 0; i < (*vertex).size(); i++)
 			if(!ant.WereVisisted(i) && (*vertex)[i] > 0) //if not visited and adjacent to the current
@@ -72,7 +72,6 @@ private:
 		return true;
 	}
 	unsigned int ChooseNextVertex(int nowVertex, vector<int> *vertex){
-		//считаем сумму
 		float sum = 0.0f;
 		for(unsigned int i = 0; i < (*vertex).size(); i++){
 			if((*vertex)[i] == 0 || ant.WereVisisted(i)) continue;
@@ -99,8 +98,7 @@ private:
 			if(randVal >= left && randVal < right)return idx[i];
 			left = right;	
 		}
-		//if too close to one
-		if(randVal > 0 && randVal <= 1) return idx[idx.size() - 1];
+		return idx[idx.size() - 1];
 	}
 	//finding the maximum level on pheromone matrix
 	int FindMax(vector<int> *v, int idx){
